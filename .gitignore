@@ -97,4 +97,4 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 
-./SecretRingKey.gpg
+SecretRingKey.gpg
