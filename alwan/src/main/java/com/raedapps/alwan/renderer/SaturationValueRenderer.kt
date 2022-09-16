@@ -8,11 +8,11 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import com.raedapps.alwan.model.HSVColorPickerUIData
-import com.raedapps.alwan.model.HSVColor
+import com.raedapps.alwan.model.RSVColor
 
 internal fun DrawScope.drawSaturationValueRect(
     uiData: HSVColorPickerUIData,
-    selectedColor: HSVColor,
+    selectedColor: RSVColor,
 ) {
     val rect = uiData.saturationValueRect
     val cornerRadius = CornerRadius(8.dp.toPx(), 8.dp.toPx())
@@ -54,7 +54,7 @@ internal fun DrawScope.drawSaturationValueRect(
 
 internal fun DrawScope.drawSaturationValueIndicator(
     uiData: HSVColorPickerUIData,
-    selectedColor: HSVColor,
+    selectedColor: RSVColor,
     active: Boolean,
 ) {
     val rect = uiData.saturationValueRect

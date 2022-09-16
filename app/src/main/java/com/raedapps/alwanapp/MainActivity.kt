@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         var color by remember {
-                            mutableStateOf(Color.Red)
+                            mutableStateOf(Color(0xFF2187BB))
                         }
                         /*Box(
                             modifier = Modifier

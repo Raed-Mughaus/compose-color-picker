@@ -1,13 +1,16 @@
 package com.raedapps.alwan.model
 
 import androidx.compose.ui.graphics.Color
-import com.raedapps.alwan.lerp
+import com.raedapps.alwan.rotationToHue
 import kotlin.math.pow
 
 private val MAX_PACKED_VALUE = 2f.pow(16).toInt() - 1
 
+/**
+ * RSV stands for Rotation Saturation Value
+ */
 @JvmInline
-internal value class HSVColor private constructor(
+internal value class RSVColor private constructor(
     private val value: ULong,
 ) {
 
@@ -17,44 +20,29 @@ internal value class HSVColor private constructor(
         v: Float,
     ) : this(pack(h, s, v))
 
-    val h get() = 360 * ((value shr 32) and 0XFFFFu).toFloat() / MAX_PACKED_VALUE
+    val r get() = 360 * ((value shr 32) and 0XFFFFu).toFloat() / MAX_PACKED_VALUE
 
     val s get() = ((value shr 16) and 0XFFFFu).toFloat() / MAX_PACKED_VALUE
 
     val v get() = (value and 0XFFFFu).toFloat() / MAX_PACKED_VALUE
 
     fun toColor(): Color {
-        val step = 1 - h / 360
-        val (previousStep, previousHue) = STEP_HUE_LIST
-            .filter { it.first <= step }
-            .maxBy { it.first }
-        val (nextStep, nextHue) = STEP_HUE_LIST
-            .filter { it.first >= step }
-            .minBy { it.first }
         return Color.hsv(
-            if (previousStep == nextStep) {
-                previousHue
-            } else {
-                lerp(
-                    previousHue,
-                    nextHue,
-                    (step - previousStep) / (nextStep - previousStep),
-                )
-            },
+            rotationToHue(r),
             s,
             v,
         )
     }
 
     fun copy(
-        h: Float = this.h,
+        h: Float = this.r,
         s: Float = this.s,
         v: Float = this.v,
-    ): HSVColor {
-        return HSVColor(h, s, v)
+    ): RSVColor {
+        return RSVColor(h, s, v)
     }
 
-    override fun toString() = "HSV(h = $h, s = ${(100_00 * s).toInt() / 100}, v = ${(100_00 * v).toInt() / 100})"
+    override fun toString() = "HSV(h = $r, s = ${(100_00 * s).toInt() / 100}, v = ${(100_00 * v).toInt() / 100})"
 
 }
 

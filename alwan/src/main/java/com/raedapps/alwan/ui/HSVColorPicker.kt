@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.input.pointer.pointerInput
 import com.raedapps.alwan.model.HSVColorPickerUIData
-import com.raedapps.alwan.model.HSVColor
+import com.raedapps.alwan.model.RSVColor
 import com.raedapps.alwan.event.handler.detectHueChangeEvent
 import com.raedapps.alwan.event.handler.detectSaturationValueChange
 import com.raedapps.alwan.renderer.drawHueCircle
@@ -18,9 +18,9 @@ import com.raedapps.alwan.renderer.drawSaturationValueIndicator
 internal fun HSVColorPicker(
     modifier: Modifier,
     uiData: HSVColorPickerUIData,
-    selectedColor: HSVColor,
+    selectedColor: RSVColor,
     onChangeStart: () -> Unit,
-    onColorChanged: (HSVColor) -> Unit,
+    onColorChanged: (RSVColor) -> Unit,
     onChangeEnd: () -> Unit,
 ) {
     var activeHueIndicator by remember { mutableStateOf(false) }

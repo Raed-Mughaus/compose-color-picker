@@ -44,21 +44,3 @@ private fun rectInside(circle: Circle): Rect {
     val topLeft = circle.center - Offset(size, size)
     return Rect(topLeft, Size(2 * size, 2 * size))
 }
-
-val STEP_HUE_LIST = listOf(0, 120, 160, 210, 260, 310, 360)
-    .mapIndexed { i, angle ->
-        Pair(
-            1 - angle / 360f,
-            i * 60f,
-        )
-    }
-
-val STEP_COLOR_LIST = STEP_HUE_LIST
-    .map { (step, hue) ->
-        Pair(
-            step,
-            Color.hsv(hue, 1f, 1f),
-        )
-    }
-    .reversed()
-    .toTypedArray()
