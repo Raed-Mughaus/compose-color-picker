@@ -22,31 +22,16 @@ internal val STEP_HUE_LIST = ANGLES
         )
     }
 
-internal fun hueToRotation(h: Float): Float {
-    val step = 1 - h / 360
-    val (previousStep, previousHue) = STEP_ROTATION_LIST
-        .filter { it.first <= step }
-        .maxBy { it.first }
-    val (nextStep, nextHue) = STEP_ROTATION_LIST
-        .filter { it.first >= step }
-        .minBy { it.first }
-    return if (previousStep == nextStep) {
-        previousHue
-    } else {
-        lerp(
-            previousHue,
-            nextHue,
-            (step - previousStep) / (nextStep - previousStep),
-        )
-    }
-}
+internal fun hueToRotation(h: Float) = map(h, STEP_ROTATION_LIST)
 
-internal fun rotationToHue(r: Float): Float {
-    val step = 1 - r / 360
-    val (previousStep, previousHue) = STEP_HUE_LIST
+internal fun rotationToHue(r: Float) = map(r, STEP_HUE_LIST)
+
+private fun map(x: Float, stepXList: List<Pair<Float, Float>>): Float {
+    val step = 1 - x / 360
+    val (previousStep, previousHue) = stepXList
         .filter { it.first <= step }
         .maxBy { it.first }
-    val (nextStep, nextHue) = STEP_HUE_LIST
+    val (nextStep, nextHue) = stepXList
         .filter { it.first >= step }
         .minBy { it.first }
     return if (previousStep == nextStep) {
