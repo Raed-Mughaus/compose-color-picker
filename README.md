@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/12600936/189493581-ae1d92ea-143f-4b0f-
 #### Gradle:
 ```gradle
 dependencies {
-  implementation 'com.raedapps:alwan:1.0.0'
+  implementation 'com.raedapps:alwan:1.0.1'
 }
 ```
 

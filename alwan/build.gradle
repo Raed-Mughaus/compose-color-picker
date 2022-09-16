@@ -44,7 +44,7 @@ dependencies {
 
 ext {
     PUBLISH_GROUP_ID = 'com.raedapps'
-    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_VERSION = '1.0.1'
     PUBLISH_ARTIFACT_ID = 'alwan'
     PUBLISH_DESCRIPTION = 'An Android Jetpack Compose color picker'
     PUBLISH_URL = 'https://github.com/Raed-Mughaus/compose-color-picker'
